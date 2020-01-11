@@ -50,6 +50,7 @@ Imports:
     sjlabelled (>= 1.1.1),
     sjmisc (>= 2.8.2),
     sjstats (>= 0.17.7),
+    StatisticalModels,
     tidyr (>= 1.0.0)
 Suggests:
     brms,
@@ -67,6 +68,7 @@ Suggests:
     TMB,
     Zelig,
     testthat
+Remotes: git::https://github.com/timnewbold/StatisticalModels.git
 URL: https://strengejacke.github.io/sjPlot/
 BugReports: https://github.com/strengejacke/sjPlot/issues
 RoxygenNote: 7.0.2

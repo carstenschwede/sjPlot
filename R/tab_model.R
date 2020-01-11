@@ -682,7 +682,17 @@ tab_model <- function(
         # via adjusted ICC, use these results and avoid time consuming
         # multiple computation
         if (is_mixed_model(model)) {
-          if (inherits(model, "brmsfit")) {
+          if (inherits(model, "glmerMod")) {
+            rsqdummy <- tryCatch({
+              StatisticalModels::R2GLMER(model)
+            }, error = function(x) {
+              NULL
+            })
+            if (!is.null(rsqdummy)) {
+              rsq <- list(`Marginal R2` = rsqdummy$marginal,
+                `Conditional R2` = rsqdummy$conditional)
+            }
+          } else if (inherits(model, "brmsfit")) {
             rsqdummy <- tryCatch(
               {
                 suppressWarnings(performance::r2(model))
